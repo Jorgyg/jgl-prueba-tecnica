@@ -1,0 +1,8 @@
+<div class="d-flex flex-wrap p-4">
+    <div class="m-4  d-flex flex-column justify-content-center" *ngFor="let pokemon of pokemons; let i = index">
+        <img src="{{ pokemon.image }}" alt="">
+        <p class="d-flex justify-content-center">{{pokemon.name}}</p>
+        <a [routerLink]="['/detalle']" [queryParams]="{ index: i }"class="btn btn-warning">See more</a>
+    </div>
+</div>
+

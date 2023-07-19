@@ -51,7 +51,8 @@ export class CharactersComponent implements OnInit {
           this.totalCharacters++;       
             this.pokemons.push({
               name: this.characters.forms[0].name,
-              image: this.frontImg + i + '.png'
+              image: this.frontImg + i + '.png',
+              id: this.characters.id
             });
         }
       });
@@ -71,7 +72,8 @@ export class CharactersComponent implements OnInit {
         this.totalCharacters++;
           this.pokemons.push({
             name: this.characters.forms[0].name,
-            image: this.frontImg + i + '.png'
+            image: this.frontImg + i + '.png',
+            id: this.characters.id
           });
         
       });

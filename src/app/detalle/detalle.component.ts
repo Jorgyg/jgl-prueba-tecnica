@@ -20,7 +20,7 @@ export class DetalleComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.index = params['index'];
-      this.databaseService.getPokemonById(+this.index + 1).subscribe(result => {
+      this.databaseService.getPokemonById(+this.index ).subscribe(result => {
         this.character = result;
         for (let abil of this.character.abilities) {
           if(abil.ability.name != undefined) {

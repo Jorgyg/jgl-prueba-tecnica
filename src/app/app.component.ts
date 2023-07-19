@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from './database.service';
-import { SharedService } from './share.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,32 +9,21 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'jgl-angular-json';
-
-  characters: any;
   searchQuery: string = '';
 
-  constructor(
-    private databaseService: DatabaseService,
-    private sharedService: SharedService,
-    private router: Router
-  ) { }
+  constructor(private router: Router) {}
 
+  //Funcion para hacer busqueda a caharcters
   onSearch(): void {
-    const searchCar: any[] = [];
-
-    for (let i = 1; i <= 600; i++) {
-      this.databaseService.getPokemonById(i).subscribe(result => {
-        this.characters = result;
-        if (result.name.toLowerCase().startsWith(this.searchQuery.toLowerCase())) {
-          searchCar.push(this.characters);
-        }
-      });
-    }
-
-    // Asigna el array searchCar al searchResults del servicio compartido
-    this.sharedService.searchResults = searchCar;
-
-    // Navega a la vista de Characters
-    this.router.navigateByUrl('/search');
+    const queryParams = { searchQuery: this.searchQuery };
+    this.router.navigate(['/characters'], { queryParams });
   }
+
+
+  resetSearch(): void {
+    this.searchQuery = '';
+    this.router.navigateByUrl('/characters');
+  }
+  
+  
 }

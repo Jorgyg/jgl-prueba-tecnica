@@ -10,7 +10,6 @@ import { CharactersComponent } from './characters/characters.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { SearchComponent } from './search/search.component';
     CharactersComponent,
     DetalleComponent,
     AboutComponent,
-    HomeComponent,
-    SearchComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
